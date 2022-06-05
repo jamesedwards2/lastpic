@@ -1,5 +1,5 @@
 
-#Requirements
+# Requirements
 1. 1080p screen resolution for it to position the image viewer window in the bottom right of the screen.
 
 2. The gnome desktop environment. This comes by default on Ubuntu.
