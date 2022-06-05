@@ -5,32 +5,24 @@ import sys
 
 
 try:
-	n = sys.argv[1]
+	argument1 = sys.argv[1] #looks to see if user used an argument after the lastpic command
 except:
-	n = "1"
-try:
-	m = sys.argv[2]
-except:
-	m = False
+	argument1 = "1"
 
-if m == "e" or m == "email":
-	print("email")
 
-if n == "1":
-	a = os.popen("ls -t $HOME/Pictures | head -1")
+if argument1 == "1":
+	headResult = os.popen("ls -t $HOME/Pictures | head -1") #if no argument is used, finds file name for last file
 else:
-	a = os.popen("ls -t $HOME/Pictures | head -" + n + " | tail -1")
+	headResult = os.popen("ls -t $HOME/Pictures | head -" + n + " | tail -1") #if a number is given as an argument, finds the file as far back as the number given
 
-l = a.read()
-#.split(".png")
+headResultUsable = headResult.read()
 
-#g = "xdg-open /home/james/Pictures/'" + l[0] + ".png'"
-g = "xdg-open $HOME/Pictures/'" + l.rstrip() + "'"
-qq = l.rstrip().split(" ")
-qqq = "\ ".join(qq)
-print("xdg-open $HOME/Pictures/" + qqq)
 
-os.system(g + " && sleep 0.7 && xdotool getwindowfocus windowsize 400 400 windowmove 1350 650 mousemove --sync 1397 683 && sleep 0.1 && xdotool click 3 click 3 && sleep 0.1 && xdotool mousemove --sync 1417 783 click 1")
+step1 = "xdg-open $HOME/Pictures/'" + headResultUsable.rstrip() + "'"
+step2 = headResultUsable.rstrip().split(" ")
+step3 = "\ ".join(step2)
+print("xdg-open $HOME/Pictures/" + step3)
 
-# ~ emailer()
+os.system(step1 + " && sleep 0.7 && xdotool getwindowfocus windowsize 400 400 windowmove 1350 650 mousemove --sync 1397 683 && sleep 0.1 && xdotool click 3 click 3 && sleep 0.1 && xdotool mousemove --sync 1417 783 click 1")
+
 	
